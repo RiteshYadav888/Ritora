@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Study Planner</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+    <span class="logo-mark">R</span>
+    <span class="logo-text">Ritora</span>
+</div>
+
+            <a href="#" class="active">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="#">
+                <span>✓</span>
+                My Tasks
+            </a>
+
+            <a href="#">
+                <span>◫</span>
+                Planner
+            </a>
+
+            <a href="#">
+                <span>◔</span>
+                Progress
+            </a>
+
+            <a href="#">
+                <span>◷</span>
+                Pomodoro
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="ai-badge">
+                <span class="ai-dot"></span>
+                AI Powered
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+        <!-- Header -->
+
+        <header class="header">
+
+            <div>
+
+                <p class="welcome">
+                    Welcome back 👋
+                </p>
+
+                <h1>
+                    AI Study Planner
+                </h1>
+
+                <p class="header-subtitle">
+                    Plan smarter. Study better. Achieve more.
+                </p>
+
+            </div>
+
+            <button class="add-task-btn">
+                <span>+</span>
+                Add Task
+            </button>
+
+        </header>
+
+
+        <!-- =========================
+             STATISTICS
+        ========================== -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+                    <span class="stat-title">
+                        Today's Tasks
+                    </span>
+
+                    <span class="stat-icon purple">
+                        ✓
+                    </span>
+                </div>
+
+                <h2 id="todayTasks">
+                    0
+                </h2>
+
+                <p class="stat-description">
+                    Tasks planned for today
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+                    <span class="stat-title">
+                        Completed
+                    </span>
+
+                    <span class="stat-icon green">
+                        ✓
+                    </span>
+                </div>
+
+                <h2 id="completedTasks">
+                    0
+                </h2>
+
+                <p class="stat-description">
+                    Tasks completed
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+                    <span class="stat-title">
+                        Study Hours
+                    </span>
+
+                    <span class="stat-icon blue">
+                        ◷
+                    </span>
+                </div>
+
+                <h2 id="studyHours">
+                    0h
+                </h2>
+
+                <p class="stat-description">
+                    Total planned study time
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+                    <span class="stat-title">
+                        Progress
+                    </span>
+
+                    <span class="stat-icon orange">
+                        ↗
+                    </span>
+                </div>
+
+                <h2 id="progressPercentage">
+                    0%
+                </h2>
+
+                <p class="stat-description">
+                    Overall completion
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             DASHBOARD GRID
+        ========================== -->
+
+        <section class="dashboard-grid">
+
+            <!-- Today's Tasks -->
+
+            <div class="panel tasks-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="panel-label">
+                            YOUR SCHEDULE
+                        </p>
+
+                        <h2>
+                            Today's Tasks
+                        </h2>
+                    </div>
+
+                    <button class="view-all-btn">
+                        View All
+                    </button>
+
+                </div>
+
+
+                <!-- Empty State -->
+
+                <div class="empty-state" id="emptyState">
+
+                    <div class="empty-icon">
+                        📚
+                    </div>
+
+                    <h3>
+                        No tasks yet
+                    </h3>
+
+                    <p>
+                        Add your first study task to get started.
+                    </p>
+
+                    <button class="add-task-btn secondary-add">
+                        + Add Your First Task
+                    </button>
+
+                </div>
+
+
+                <!-- Task List -->
+
+                <div
+                    class="task-list"
+                    id="taskList">
+                </div>
+
+            </div>
+
+
+            <!-- AI Recommendation -->
+
+            <div class="panel ai-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="panel-label">
+                            SMART ASSISTANT
+                        </p>
+
+                        <h2>
+                            AI Recommendation
+                        </h2>
+                    </div>
+
+                    <div class="ai-spark">
+                        ✦
+                    </div>
+
+                </div>
+
+
+                <div class="recommendation">
+
+                    <div class="recommendation-icon">
+                        ✦
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Study smarter
+                        </h3>
+
+                        <p id="recommendationText">
+                            Add some study tasks and your
+                            personalized recommendation
+                            will appear here.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-tip">
+
+                    <span>💡</span>
+
+                    <p>
+                        Focus on high-priority tasks first
+                        and keep your study sessions consistent.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             WEEKLY PROGRESS
+        ========================== -->
+
+        <section class="panel weekly-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <p class="panel-label">
+                        PERFORMANCE
+                    </p>
+
+                    <h2>
+                        Weekly Progress
+                    </h2>
+                </div>
+
+                <span class="week-label">
+                    This Week
+                </span>
+
+            </div>
+
+
+            <div class="progress-wrapper">
+
+                <div class="progress-info">
+
+                    <span>
+                        Overall Progress
+                    </span>
+
+                    <strong id="progressText">
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress-fill"
+                        id="progressFill">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         ADD TASK MODAL
+    ========================== -->
+
+    <div
+        class="modal-overlay"
+        id="taskModal">
+
+        <div class="task-modal">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <p class="modal-label">
+                        STUDY PLANNER
+                    </p>
+
+                    <h2>
+                        Add New Study Task
+                    </h2>
+
+                </div>
+
+                <button
+                    class="close-modal"
+                    id="closeModal">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="taskForm">
+
+                <!-- Subject -->
+
+                <div class="form-group">
+
+                    <label for="subject">
+                        Subject
+                    </label>
+
+                    <input
+                        type="text"
+                        id="subject"
+                        placeholder="e.g. Mathematics"
+                        required>
+
+                </div>
+
+
+                <!-- Topic -->
+
+                <div class="form-group">
+
+                    <label for="topic">
+                        Topic
+                    </label>
+
+                    <input
+                        type="text"
+                        id="topic"
+                        placeholder="e.g. Differentiation"
+                        required>
+
+                </div>
+
+
+                <!-- Date + Time -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="taskDate">
+                            Due Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="taskDate"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="studyTime">
+                            Study Time
+                        </label>
+
+                        <select id="studyTime">
+
+                            <option value="30">
+                                30 Minutes
+                            </option>
+
+                            <option value="60">
+                                1 Hour
+                            </option>
+
+                            <option value="90">
+                                1.5 Hours
+                            </option>
+
+                            <option value="120">
+                                2 Hours
+                            </option>
+
+                            <option value="180">
+                                3 Hours
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Priority -->
+
+                <div class="form-group">
+
+                    <label for="priority">
+                        Priority
+                    </label>
+
+                    <select id="priority">
+
+                        <option value="Low">
+                            Low
+                        </option>
+
+                        <option
+                            value="Medium"
+                            selected>
+                            Medium
+                        </option>
+
+                        <option value="High">
+                            High
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Buttons -->
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        id="cancelTask">
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-task-btn">
+                        + Add Task
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <footer class="footer">
+
+    <p class="copyright">
+        © 2026 Ritesh Yadav. All Rights Reserved.
+    </p>
+
+    <p class="developed">
+        Developed by <strong>Ritesh Yadav</strong>
+    </p>
+
+</footer>
+<script src="script.js"></script>   
+
+</body>
+</html>
